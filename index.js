@@ -82,5 +82,10 @@ let todos = [
 ]
 
 
+
+alert("Add anothere ID, Name, City?")
+
+prompt("user for a user id")
+
 console.log(users)
 console.log(todos)

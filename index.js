@@ -15,77 +15,75 @@
 //Challenge 2
 //Now that you can add a todo, add the option to either delete or update a todo. Add also the option to repeatedly choose a different user, or to finish the program
 
-let users = [
-   { ID: 123, 
-    Name: "Jeton Hasani",
-    Username:"Toni",
-    email: 'toni@april.biz',
-    City: "Prizren",
-   },
-   { ID: 124, 
-    Name: "Hasan Tmava",
-    Username:"Cani",
-    email: 'Cani@april.biz',
-    City: "Malishevë",
-   },
-   { ID: 125, 
-    Name: "Kujtim Gashi",
-    Username:"Kujta",
-    email: 'kujta@april.biz',
-    City: "Prishtinë",
-   },
-   { ID: 126, 
-    Name: "Arbenit Karaniqi",
-    Username:"Niti",
-    email: 'niti@april.biz',
-    City: "Lipjan",
-   },
-   { ID: 127, 
-    Name: "Jehona Shehu",
-    Username:"Ona",
-    email: 'ona@april.biz',
-    City: "Mitrovic",
-   },
-]
+// - Create an alert that lists all users, with their ids, names and what city they're from ✅
+function listUsers() {
+  let greeting = ''
 
-let todos = [
-    {
-      userId: 1,
-      id: 123,
-      title: 'delectus aut autem',
-      completed: false
-    },
-    {
-        userId: 1,
-        id: 124,
-        title: 'quis ut nam facilis et officia qui',
-        completed: false
-      },
-      {
-        userId: 1,
-        id: 125,
-        title: 'fugiat veniam minus',
-        completed: false
-      },
-      {
-        userId: 1,
-        id: 126,
-        title: 'et porro tempora',
-        completed: true
-      },
-      {
-        userId: 1,
-        id: 127,
-        title: 'laboriosam mollitia et enim quasi adipisci quia provident illum',
-        completed: false
-      },
-]
+  for (let user of users) {
+    // getting the name
+    let name = user.name
+    // getting the id
+    let id = user.id
+    // getting the city
+    let city = user.address.city
 
+    greeting += `Id: ${id} Name: ${name} City: ${city}\n\n`
+  }
 
+  alert(greeting)
+}
 
-alert("Add anothere ID, Name, City?")
+// - Prompt the user for a user id and then: ✅
+function getUserId() {
+  let userId = Number(prompt('Enter your user id'))
+  return userId
+}
 
-prompt("user for a user id")
+//    - to find the user with this id ✅
+function findUser() {
+  // find the user with this id
+  let theUser = null
 
-console.log(users)
-console.log(todos)
+  for (let user of users) {
+    if (user.id === userId) {
+      theUser = user
+      break
+    }
+  }
+
+  return theUser
+}
+
+//    - to find the todos with this user id ✅
+function findTodos() {
+  // // find the todos with this user id
+  let theTodos = []
+
+  for (let todo of todos) {
+    if (todo.userId === userId) {
+      theTodos.push(todo)
+    }
+  }
+
+  return theTodos
+}
+
+//   -  alert the username and the todo titles ✅
+function showUserTodos() {
+  // alert the username and the todo titles
+  let finalMessage = ''
+
+  finalMessage += `Hello ${user.username}:\n\n`
+
+  for (let todo of userTodos) {
+    finalMessage += `- ${todo.title}\n`
+  }
+
+  alert(finalMessage)
+}
+
+listUsers()
+let userId = getUserId()
+let user = findUser()
+let userTodos = findTodos()
+showUserTodos()
